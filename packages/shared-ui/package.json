@@ -9,6 +9,6 @@
     "tslib": "^2.3.0"
   },
   "peerDependencies": {
-    "react": ">=18.0.0"
+    "react": ">=19.0.0"
   }
 }
