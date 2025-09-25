@@ -7,6 +7,7 @@ clone:
     image: woodpeckerci/plugin-git
     settings:
       depth: 50
+      partial: false
 
 steps:
   - name: build
