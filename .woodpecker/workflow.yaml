@@ -18,5 +18,5 @@ steps:
       - pnpm affected:build
     volumes:
       - pnpm-store:/pnpm-store
-#    environment:
-#      PNPM_STORE_DIR: /pnpm-store
+    environment:
+      PNPM_STORE_DIR: /pnpm-store
