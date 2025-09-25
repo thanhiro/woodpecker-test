@@ -3,8 +3,11 @@ when:
     branch: main
 
 clone:
-  partial: false
-  depth: 50
+  - name: git
+    image: woodpeckerci/plugin-git
+    settings:
+       partial: false
+       depth: 50
 
 steps:
   - name: build
