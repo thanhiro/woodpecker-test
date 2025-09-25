@@ -11,7 +11,7 @@ clone:
 
 steps:
   - name: build
-    image: node:24.8.0
+    image: node:24.8.0-trixie-slim
     commands:
       - corepack enable && corepack prepare pnpm@latest --activate
       - pnpm config set store-dir /pnpm-store
