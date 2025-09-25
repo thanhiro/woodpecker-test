@@ -14,10 +14,10 @@ steps:
     image: node:24.8.0
     commands:
       - corepack enable && corepack prepare pnpm@latest --activate
-      - pnpm config set store-dir $(PNPM_STORE_DIR)
+      # - pnpm config set store-dir $(PNPM_STORE_DIR)
       - pnpm install
       - pnpm affected:build
     volumes:
       - pnpm-store:/pnpm-store
-    environment:
-      PNPM_STORE_DIR: /pnpm-store
+#    environment:
+#      PNPM_STORE_DIR: /pnpm-store
