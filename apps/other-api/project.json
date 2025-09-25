@@ -1,7 +1,7 @@
 {
-  "name": "foobar-api",
+  "name": "other-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/foobar-api/src",
+  "sourceRoot": "apps/other-api/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,12 +10,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/foobar-api",
+        "outputPath": "dist/apps/other-api",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/foobar-api/src/main.ts",
-        "tsConfig": "apps/foobar-api/tsconfig.app.json",
-        "assets": ["apps/foobar-api/src/assets"],
+        "main": "apps/other-api/src/main.ts",
+        "tsConfig": "apps/other-api/tsconfig.app.json",
+        "assets": ["apps/other-api/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -41,8 +41,8 @@
       "cache": true,
       "executor": "@nx/js:prune-lockfile",
       "outputs": [
-        "{workspaceRoot}/dist/apps/foobar-api/package.json",
-        "{workspaceRoot}/dist/apps/foobar-api/pnpm-lock.yaml"
+        "{workspaceRoot}/dist/apps/other-api/package.json",
+        "{workspaceRoot}/dist/apps/other-api/pnpm-lock.yaml"
       ],
       "options": {
         "buildTarget": "build"
@@ -51,7 +51,7 @@
     "copy-workspace-modules": {
       "dependsOn": ["build"],
       "cache": true,
-      "outputs": ["{workspaceRoot}/dist/apps/foobar-api/workspace_modules"],
+      "outputs": ["{workspaceRoot}/dist/apps/other-api/workspace_modules"],
       "executor": "@nx/js:copy-workspace-modules",
       "options": {
         "buildTarget": "build"
@@ -67,15 +67,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "foobar-api:build",
+        "buildTarget": "other-api:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "foobar-api:build:development"
+          "buildTarget": "other-api:build:development"
         },
         "production": {
-          "buildTarget": "foobar-api:build:production"
+          "buildTarget": "other-api:build:production"
         }
       }
     }

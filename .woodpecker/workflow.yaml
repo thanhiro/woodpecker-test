@@ -2,11 +2,12 @@ when:
   - event: push
     branch: main
 
-pipeline:
-  build:
-    image: codeberg.org/woodpecker-plugins/node-pm
-    settings:
-      run: affected:build
-      # with: pnpm
-      frozen_lockfile: true
-      ignore_node_modules: true
+steps:
+  pipeline:
+    build:
+      image: codeberg.org/woodpecker-plugins/node-pm
+      settings:
+        run: affected:build
+        # with: pnpm
+        frozen_lockfile: true
+        ignore_node_modules: true
