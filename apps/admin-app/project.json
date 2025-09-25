@@ -1,0 +1,17 @@
+{
+  "name": "admin-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/admin-app/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "dev": {
+      "dependsOn": [
+        {
+          "target": "serve",
+          "projects": ["foobar-api"]
+        }
+      ]
+    }
+  }
+}

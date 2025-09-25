@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@my-workspace/admin-app/*": ["apps/admin-app/src/*"],
+      "@my-workspace/mobile-app/*": ["apps/mobile-app/src/*"],
+      "@my-workspace/shared-data": ["packages/shared-data/src/index.ts"],
+      "@my-workspace/shared-ui": ["packages/shared-ui/src/index.ts"],
+      "@my-workspace/shared-utils": ["packages/shared-utils/src/index.ts"],
+      "@my-workspace/web-app/*": ["apps/web-app/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

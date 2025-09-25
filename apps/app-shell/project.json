@@ -1,0 +1,17 @@
+{
+  "name": "app-shell",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/app-shell/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "dev": {
+      "dependsOn": [
+        {
+          "target": "serve",
+          "projects": ["foobar-api"]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "shared-data",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/shared-data/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/shared-data",
+        "main": "packages/shared-data/src/index.ts",
+        "tsConfig": "packages/shared-data/tsconfig.lib.json",
+        "assets": ["packages/shared-data/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/shared-data/jest.config.ts"
+      }
+    }
+  }
+}
