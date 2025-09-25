@@ -11,10 +11,11 @@ clone:
 
 steps:
   - name: build
-    image: node:24.8.0-bookworm-slim
+    image: node:24.8.0-trixie
     commands:
       - corepack enable && corepack prepare pnpm@latest --activate
       - pnpm config set store-dir /pnpm-store
+      - ls -la /pnpm-store
       - pnpm install
       - pnpm affected:build
     volumes:
