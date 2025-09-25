@@ -24,14 +24,14 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   label,
   onClick,
   variant = 'primary',
   size = 'medium',
   disabled = false,
   ...props
-}) => {
+}: ButtonProps) => {
   return (
     <button
       type="button"
