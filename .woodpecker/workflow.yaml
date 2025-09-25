@@ -2,6 +2,10 @@ when:
   - event: push
     branch: main
 
+clone:
+  partial: false
+  depth: 50
+
 steps:
   - name: build
     image: node:24.8.0
