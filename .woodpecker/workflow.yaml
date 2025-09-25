@@ -3,11 +3,9 @@ when:
     branch: main
 
 steps:
-  pipeline:
-    build:
-      image: codeberg.org/woodpecker-plugins/node-pm
-      settings:
-        run: affected:build
-        # with: pnpm
-        frozen_lockfile: true
-        ignore_node_modules: true
+  - name: build
+    image: node:24.8.0
+    commands:
+      - corepack enable && corepack prepare pnpm@latest --activate
+      - pnpm install
+      - pnpm affected:build
