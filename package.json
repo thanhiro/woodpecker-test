@@ -5,9 +5,9 @@
   "scripts": {
     "start:api": "nx serve foobar-api",
     "build:api": "nx build foobar-api",
-    "affected:build": "nx affected -t build",
-    "affected:test": "nx affected -t test",
-    "affected:lint": "nx affected -t lint"
+    "affected:build": "NX_NO_CLOUD=true nx affected -t build",
+    "affected:test": "NX_NO_CLOUD=true nx affected -t test",
+    "affected:lint": "NX_NO_CLOUD=true nx affected -t lint"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",

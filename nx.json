@@ -2,6 +2,7 @@
   "installation": { "version": "21.5.3" },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "nxCloudId": "68d2773d6baa947a0e5e9221",
+  "neverConnectToCloud": true,
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
