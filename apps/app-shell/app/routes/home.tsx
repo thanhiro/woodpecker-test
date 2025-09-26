@@ -11,12 +11,12 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export function Home() {
+function Home() {
   console.log("Home RSC");
   
   return (
     <div>
-      <h1>App Shell</h1>
+      <h1>App Shell!</h1>
       <Button label="Click me" />
     </div>
   );
