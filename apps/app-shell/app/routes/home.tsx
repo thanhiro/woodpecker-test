@@ -16,7 +16,7 @@ function Home() {
   
   return (
     <div>
-      <h1>App Shell!</h1>
+      <h1>App Shell</h1>
       <Button label="Click me" />
     </div>
   );
