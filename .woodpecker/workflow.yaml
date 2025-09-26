@@ -18,15 +18,15 @@ steps:
       - git fetch --no-tags --prune origin main
       - git checkout -B main origin/main
       - |
-        if [ "${CI_PIPELINE_EVENT}" = "pull_request" ]; then
-          TARGET_BRANCH="origin/${CI_COMMIT_REF}"
-          git fetch origin $TARGET_BRANCH
-          BASE_SHA=$(git merge-base $TARGET_BRANCH $HEAD_SHA)
-        else
-          BASE_SHA=$(git rev-parse HEAD~1)
-        fi
-        echo "BASE_SHA=$BASE_SHA" >> /woodpecker/envvars
-        echo "HEAD_SHA=$HEAD_SHA" >> /woodpecker/envvars
+          if [ "${CI_PIPELINE_EVENT}" = "pull_request" ]; then
+            TARGET_BRANCH="origin/${CI_COMMIT_REF}"
+            git fetch origin $TARGET_BRANCH
+            BASE_SHA=$(git merge-base $TARGET_BRANCH $HEAD_SHA)
+          else
+            BASE_SHA=$(git rev-parse HEAD~1)
+          fi
+          echo "BASE_SHA=$BASE_SHA" >> /woodpecker/envvars
+          echo "HEAD_SHA=$HEAD_SHA" >> /woodpecker/envvars
       - corepack enable && corepack prepare pnpm@latest --activate
       - pnpm config set store-dir /pnpm-store
       - ls -la /pnpm-store
