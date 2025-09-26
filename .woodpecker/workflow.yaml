@@ -6,8 +6,8 @@ clone:
   - name: git
     image: woodpeckerci/plugin-git
     settings:
-      depth: 100
-      
+      partial: false
+
 steps:
   - name: build
     image: node:24.8.0-trixie
