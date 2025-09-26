@@ -12,13 +12,26 @@ clone:
 steps:
   - name: build
     image: node:24.8.0-trixie
+    environment:
+      HEAD_SHA: ${CI_COMMIT_SHA}
     commands:
       - git fetch --no-tags --prune origin main
       - git checkout -B main origin/main
+        commands:
+      - |
+        if [ "${CI_PIPELINE_EVENT}" = "pull_request" ]; then
+          TARGET_BRANCH="origin/${CI_COMMIT_REF}"
+          git fetch origin $TARGET_BRANCH
+          BASE_SHA=$(git merge-base $TARGET_BRANCH $HEAD_SHA)
+        else
+          BASE_SHA=$(git rev-parse HEAD~1)
+        fi
+        echo "BASE_SHA=$BASE_SHA" >> /woodpecker/envvars
+        echo "HEAD_SHA=$HEAD_SHA" >> /woodpecker/envvars
       - corepack enable && corepack prepare pnpm@latest --activate
       - pnpm config set store-dir /pnpm-store
       - ls -la /pnpm-store
       - pnpm install
-      - pnpm affected:build
+      - pnpm nx affected -t build --base=$BASE_SHA --head=$HEAD_SHA
     volumes:
       - pnpm-store:/pnpm-store

@@ -7,7 +7,8 @@
     "build:api": "nx build foobar-api",
     "affected:build": "NX_NO_CLOUD=true nx affected -t build",
     "affected:test": "NX_NO_CLOUD=true nx affected -t test",
-    "affected:lint": "NX_NO_CLOUD=true nx affected -t lint"
+    "affected:lint": "NX_NO_CLOUD=true nx affected -t lint",
+    "nx": "nx"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
