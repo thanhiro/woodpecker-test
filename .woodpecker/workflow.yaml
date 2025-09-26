@@ -13,7 +13,7 @@ steps:
   - name: build
     image: node:24.8.0-trixie
     commands:
-      - git fetch --no-tags --prune --depth=0 origin main
+      - git fetch --no-tags --prune origin main
       - git checkout -B main origin/main
       - corepack enable && corepack prepare pnpm@latest --activate
       - pnpm config set store-dir /pnpm-store
