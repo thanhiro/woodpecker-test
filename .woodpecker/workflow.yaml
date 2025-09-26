@@ -17,7 +17,6 @@ steps:
     commands:
       - git fetch --no-tags --prune origin main
       - git checkout -B main origin/main
-        commands:
       - |
         if [ "${CI_PIPELINE_EVENT}" = "pull_request" ]; then
           TARGET_BRANCH="origin/${CI_COMMIT_REF}"
