@@ -12,7 +12,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 function Home() {
-  console.log("Home RSC");
+  console.log("Home RSC!");
   
   return (
     <div>
