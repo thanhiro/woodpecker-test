@@ -31,6 +31,6 @@ steps:
       - pnpm config set store-dir /pnpm-store
       - ls -la /pnpm-store
       - pnpm install
-      - pnpm nx affected -t build --base=$BASE_SHA --head=$HEAD_SHA
+      - pnpm affected:build --base=$BASE_SHA --head=$HEAD_SHA
     volumes:
       - pnpm-store:/pnpm-store
