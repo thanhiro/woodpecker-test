@@ -2,10 +2,22 @@
   "name": "app-shell",
   "private": true,
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "//dev": "cross-env NODE_ENV=development node server.js",
+    "//start": "node server.js"
+  },
   "sideEffects": false,
   "dependencies": {
+    "@react-router/node": "7.9.2",
+    "@react-router/serve": "7.9.2",
+    "compression": "^1.8.1",
+    "cross-env": "^10.0.0",
+    "isbot": "^5",
+    "react-router": "7.9.2"
   },
   "devDependencies": {
+    "@react-router/dev": "7.9.2",
+    "@react-router/fs-routes": "7.9.2",
+    "@vitejs/plugin-rsc": "^0.4.32"
   }
 }

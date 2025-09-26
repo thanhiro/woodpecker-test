@@ -1,7 +1,7 @@
 {
-  "name": "other-api",
+  "name": "stuff-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/other-api/src",
+  "sourceRoot": "apps/stuff-api/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,12 +10,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/other-api",
+        "outputPath": "dist/apps/stuff-api",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/other-api/src/main.ts",
-        "tsConfig": "apps/other-api/tsconfig.app.json",
-        "assets": ["apps/other-api/src/assets"],
+        "main": "apps/stuff-api/src/main.ts",
+        "tsConfig": "apps/stuff-api/tsconfig.app.json",
+        "assets": ["apps/stuff-api/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -41,8 +41,8 @@
       "cache": true,
       "executor": "@nx/js:prune-lockfile",
       "outputs": [
-        "{workspaceRoot}/dist/apps/other-api/package.json",
-        "{workspaceRoot}/dist/apps/other-api/pnpm-lock.yaml"
+        "{workspaceRoot}/dist/apps/stuff-api/package.json",
+        "{workspaceRoot}/dist/apps/stuff-api/pnpm-lock.yaml"
       ],
       "options": {
         "buildTarget": "build"
@@ -51,7 +51,7 @@
     "copy-workspace-modules": {
       "dependsOn": ["build"],
       "cache": true,
-      "outputs": ["{workspaceRoot}/dist/apps/other-api/workspace_modules"],
+      "outputs": ["{workspaceRoot}/dist/apps/stuff-api/workspace_modules"],
       "executor": "@nx/js:copy-workspace-modules",
       "options": {
         "buildTarget": "build"
@@ -61,21 +61,21 @@
       "dependsOn": ["prune-lockfile", "copy-workspace-modules"],
       "executor": "nx:noop"
     },
-    "serve": {
+    "dev": {
       "continuous": true,
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "other-api:build",
+        "buildTarget": "stuff-api:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "other-api:build:development"
+          "buildTarget": "stuff-api:build:development"
         },
         "production": {
-          "buildTarget": "other-api:build:production"
+          "buildTarget": "stuff-api:build:production"
         }
       }
     }

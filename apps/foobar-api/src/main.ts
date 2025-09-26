@@ -3,7 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4300;
 
 // Middleware
 app.use(cors()); // Enable CORS

@@ -1,7 +1,5 @@
 {
-  "installation": {
-    "version": "21.5.3"
-  },
+  "installation": { "version": "21.5.3" },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "nxCloudId": "68d2773d6baa947a0e5e9221",
   "namedInputs": {
@@ -27,9 +25,7 @@
     "test": {
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
     },
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
-    },
+    "lint": { "inputs": ["default", "{workspaceRoot}/.eslintrc.json"] },
     "@nx/js:tsc": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -49,9 +45,7 @@
         "linter": "eslint",
         "bundler": "vite"
       },
-      "component": {
-        "style": "css"
-      },
+      "component": { "style": "css" },
       "library": {
         "style": "css",
         "linter": "eslint",
@@ -60,12 +54,7 @@
     }
   },
   "plugins": [
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    },
+    { "plugin": "@nx/eslint/plugin", "options": { "targetName": "lint" } },
     {
       "plugin": "@nx/vite/plugin",
       "options": {
@@ -80,12 +69,7 @@
         "watchDepsTargetName": "watch-deps"
       }
     },
-    {
-      "plugin": "@nx/playwright/plugin",
-      "options": {
-        "targetName": "e2e"
-      }
-    },
+    { "plugin": "@nx/playwright/plugin", "options": { "targetName": "e2e" } },
     {
       "plugin": "@nx/react/router-plugin",
       "options": {
@@ -102,9 +86,6 @@
     "projectsRelationship": "independent",
     "projects": ["packages/*", "apps/*"]
   },
-  "workspaceLayout": {
-    "appsDir": "apps",
-    "libsDir": "packages"
-  },
+  "workspaceLayout": { "appsDir": "apps", "libsDir": "packages" },
   "packageManager": "pnpm"
 }

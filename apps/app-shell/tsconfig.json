@@ -6,7 +6,9 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "types": ["vite/client", "vitest", "@react-router/node"],
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "target": "esnext"
   },
   "files": [],
   "include": [],

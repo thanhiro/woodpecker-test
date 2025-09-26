@@ -1,8 +1,10 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
-import { reactRouter } from '@react-router/dev/vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
+//import { reactRouter } from "@react-router/dev/vite";
+import { unstable_reactRouterRSC as reactRouterRSC } from "@react-router/dev/vite";
+import rsc from "@vitejs/plugin-rsc";
 
 export default defineConfig(() => ({
   root: __dirname,
@@ -16,7 +18,9 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   plugins: [
-    !process.env.VITEST && reactRouter(),
+    reactRouterRSC(),
+    rsc(),
+    //reactRouter(),
     nxViteTsPaths(),
     nxCopyAssetsPlugin(['*.md']),
   ],
@@ -24,6 +28,11 @@ export default defineConfig(() => ({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+  /*build: {
+    rollupOptions: isSsrBuild
+      ? { input: "./server/app.ts" }
+      : undefined,
+  },*/
   build: {
     outDir: '../../dist/apps/app-shell',
     emptyOutDir: true,

@@ -1,7 +1,11 @@
-export default function AboutComponent() {
+export default function About() {
   return (
     <div>
       <h1>About!</h1>
     </div>
   );
+}
+
+export function ServerComponent() {
+  return (<About />);
 }
