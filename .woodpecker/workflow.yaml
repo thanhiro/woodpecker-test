@@ -8,7 +8,9 @@ clone:
     settings:
       depth: 0
       lfs: true
-
+      filter: ''
+      partial: false
+      
 steps:
   - name: build
     image: node:24.8.0-trixie
