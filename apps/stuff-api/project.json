@@ -78,6 +78,21 @@
           "buildTarget": "stuff-api:build:production"
         }
       }
+    },
+    "docker:build": {
+      "executor": "@nx/docker:build",
+      "options": {
+        "dockerfile": "apps/stuff-api/Dockerfile",
+        "context": ".",
+        "tags": ["stuff-api:latest", "stuff-api:${BUILD_TAG}"]
+      }
+    },
+    "docker:run": {
+      "executor": "@nx/docker:run",
+      "options": {
+        "image": "stuff-api:latest",
+        "ports": ["3001:3001"]
+      }
     }
   },
   "tags": []

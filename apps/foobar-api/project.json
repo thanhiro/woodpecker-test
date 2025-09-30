@@ -4,6 +4,20 @@
   "sourceRoot": "apps/foobar-api/src",
   "projectType": "application",
   "targets": {
+    "build:swc": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/foobar-api",
+        "format": "esm",
+        "sourcemap": true,
+        "main": "apps/foobar-api/src/main.ts",
+        "tsConfig": "apps/foobar-api/tsconfig.app.json",
+        "assets": ["apps/foobar-api/*.md"],
+        "stripLeadingPaths": true
+      }
+    },
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
@@ -11,8 +25,8 @@
       "options": {
         "platform": "node",
         "outputPath": "dist/apps/foobar-api",
-        "format": ["cjs"],
-        "bundle": false,
+        "format": ["esm"],
+        "bundle": true,
         "main": "apps/foobar-api/src/main.ts",
         "tsConfig": "apps/foobar-api/tsconfig.app.json",
         "assets": ["apps/foobar-api/src/assets"],
@@ -61,22 +75,44 @@
       "dependsOn": ["prune-lockfile", "copy-workspace-modules"],
       "executor": "nx:noop"
     },
+    "noop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'noop build'"
+      }
+    },
     "dev": {
       "continuous": true,
       "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
       "dependsOn": ["build"],
+      "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "foobar-api:build",
-        "runBuildTargetDependencies": false
+        "buildTarget": "foobar-api:build"
       },
       "configurations": {
-        "development": {
-          "buildTarget": "foobar-api:build:development"
-        },
-        "production": {
-          "buildTarget": "foobar-api:build:production"
-        }
+        "development": {},
+        "production": {}
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node dist/apps/foobar-api/src/main.js"
+      }
+    },
+    "docker:build": {
+      "executor": "@nx/docker:build",
+      "options": {
+        "dockerfile": "apps/foobar-api/Dockerfile",
+        "context": ".",
+        "tags": ["foobar-api:latest", "foobar-api:${BUILD_TAG}"]
+      }
+    },
+    "docker:run": {
+      "executor": "@nx/docker:run",
+      "options": {
+        "image": "foobar-api:latest",
+        "ports": ["3000:3000"]
       }
     }
   },

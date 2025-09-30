@@ -1,6 +1,6 @@
 {
   "name": "app-shell",
-  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "//dev": "cross-env NODE_ENV=development node server.js",
@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "@react-router/dev": "7.9.2",
-    "@react-router/fs-routes": "7.9.2",
-    "@vitejs/plugin-rsc": "^0.4.32"
+    "@react-router/fs-routes": "7.9.2"
   }
 }

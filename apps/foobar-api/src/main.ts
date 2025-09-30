@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import other from './other';
 
 const app = express();
 const PORT = process.env.PORT || 4300;
@@ -14,10 +15,10 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 // Routes
 app.get('/', (req, res) => {
   res.json({
-    message: 'Welcome to the Simple Node.js Web Service!',
+    message: 'Foobar API!',
     timestamp: new Date().toISOString(),
     version: '1.0.0',
-    environment: process.env.NODE_ENV
+    environment: process.env.NODE_ENV || 'development'
   });
 });
 
@@ -25,8 +26,13 @@ app.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
     uptime: process.uptime(),
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
   });
+});
+
+app.get('/other', (req, res) => {
+  res.json(other());
 });
 
 app.get('/api/users', (req, res) => {

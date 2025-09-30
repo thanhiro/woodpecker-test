@@ -34,3 +34,23 @@ steps:
       - pnpm affected:build --base=$BASE_SHA --head=$HEAD_SHA
     volumes:
       - pnpm-store:/pnpm-store
+  - name: build-docker-images
+    image: node:24.8.0-trixie
+    environment:
+      BUILD_TAG: ${CI_COMMIT_SHA:0:8}
+    commands:
+      - corepack enable && corepack prepare pnpm@latest --activate
+      - pnpm config set store-dir /pnpm-store
+      - pnpm install
+      - pnpm nx run foobar-api:docker:build
+    volumes:
+      - pnpm-store:/pnpm-store
+    depends_on: [build]
+
+  - name: publish-foobar-api
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      platforms: linux/amd64
+      repo: example.org/foobar-api
+      tags: latest,${CI_COMMIT_SHA:0:8}
+    depends_on: [build-docker-images]

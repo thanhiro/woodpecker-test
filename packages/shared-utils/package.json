@@ -1,7 +1,6 @@
 {
   "name": "@my-workspace/shared-utils",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.0",
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",

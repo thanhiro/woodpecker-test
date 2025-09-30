@@ -1,0 +1,9 @@
+{
+    "name": "foobar-api",
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {},
+    "sideEffects": false,
+    "dependencies": {},
+    "devDependencies": {}
+}
