@@ -10,6 +10,7 @@
   "dependencies": {
     "@react-router/node": "7.9.2",
     "@react-router/serve": "7.9.2",
+    "@vitejs/plugin-rsc": "^0.4.32",
     "compression": "^1.8.1",
     "cross-env": "^10.0.0",
     "isbot": "^5",
