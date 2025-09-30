@@ -47,10 +47,10 @@ steps:
       - pnpm-store:/pnpm-store
     depends_on: [build]
 
-  - name: publish-foobar-api
-    image: woodpeckerci/plugin-docker-buildx
-    settings:
-      platforms: linux/amd64
-      repo: example.org/foobar-api
-      tags: latest,${CI_COMMIT_SHA:0:8}
-    depends_on: [build-docker-images]
+#  - name: publish-foobar-api
+#    image: woodpeckerci/plugin-docker-buildx
+#    settings:
+#      platforms: linux/amd64
+#      repo: example.org/foobar-api
+#      tags: latest,${CI_COMMIT_SHA:0:8}
+#    depends_on: [build-docker-images]
